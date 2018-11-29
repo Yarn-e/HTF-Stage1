@@ -1,16 +1,15 @@
 body, html {
     margin: 0;
     padding: 0;
-    min-height: 100%;
-    min-width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 
 body {
     background: url("../media/bg.svg") no-repeat center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
 main {
