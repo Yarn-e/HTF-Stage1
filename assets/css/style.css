@@ -1,0 +1,38 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: ;
+}
+
+
+main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 300px;
+    max-width: 25%;
+    margin: auto;
+    background-color: rgba(0,0,0,0.2);
+}
+
+main input {
+    flex: 1;
+    height: 30px;
+    margin: 10px;
+    border: none;
+}
+
+main .row {
+    min-width: 100%;
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+main button {
+    height: 50px;
+    margin: 5px;
+    border: none;
+    flex: 1;
+    font-size: 2rem;
+}
