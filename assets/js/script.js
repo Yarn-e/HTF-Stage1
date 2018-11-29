@@ -1,47 +1,61 @@
 const pressedKeys = [];
 
-function postKeyPad(){
-    
-    var bodybeforejson = pressedKeys.join(",");
-    console.log(bodybeforejson);
-    var body = JSON.stringify({
-        "sequence" : bodybeforejson});
-    fetch("http://involved-htf-js-2018-prod.azurewebsites.net/api/challenge/1", 
-      {
+/**
+ * Checks the passcode with the API
+ *
+ * @param passcode
+ *   The json passcode.
+ *   
+ * @returns {Promise<Response>}
+ */
+function postPassCode(passcode) {
+    return fetch("http://involved-htf-js-2018-prod.azurewebsites.net/api/challenge/1", {
         method: "POST",
-        headers:{
-            "Content-Type":  "application/json",
+        headers: {
+            "Content-Type": "application/json",
             "Accept": "application/json",
-            "x-team" : "lawyer"
+            "x-team": "lawyer"
         },
-        body: body
-      })
-    .then(function(response) {
-    return response;
-  }).then(data => {
-        let response = "Bad passcode";
-        if(data.ok){
-            $("#passcode").addClass("text-good");   
-            response = "Good passcode";
-        } else {
-            $("#passcode").addClass("text-bad");   
-        }
-        $("#passcode").val(response);
-    });
+        body: passcode
+    }).then((response) => {
+        return response;
+    }).then((data) => {
+        return data;
+    })
 }
 
-function addInputToArray(getal){
+/**
+ * Checks the passCode and shows a response to the user.
+ *
+ * @returns {Promise<void>}
+ */
+async function checkPassCode() {
+    let code = pressedKeys.join(",");
+    let parsedCode = JSON.stringify({"sequence": code});
+
+    let response = await postPassCode(parsedCode);
+    let responseText = "Bad passcode!";
+    if (response.ok) {
+        $('#passcode').addClass("text-good");
+        responseText = "Good passcode!";
+    } else {
+        $('#passcode').addClass("text-bad");
+    }
+
+    $('#passcode').val(responseText);
+}
+
+function addInputToArray(getal) {
     pressedKeys.push(getal);
-    $("#passcode").val(pressedKeys.join(","));
-    console.log(pressedKeys);
+    $("#passcode").val(pressedKeys.join(" "));
 }
 
 $(document).ready(() => {
     $(".btnKeyPad").on("click", (elem) => {
-    addInputToArray(elem.target.value);
-})
+        addInputToArray(elem.target.value);
+    });
     $("#submit").on("click", () => {
-        postKeyPad();
+        checkPassCode();
     })
-})
+});
 
