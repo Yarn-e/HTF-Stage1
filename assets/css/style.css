@@ -6,19 +6,22 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'sans-serif';
 }
 
+
+body {
+    background: url("../media/bg.svg") no-repeat center;
+}
 
 main {
     display: flex;
     flex-direction: column;
     justify-content: center;
     flex-grow: 1;
-    height: 300px;
+    height: 350px;
     max-width: 25%;
     margin: auto;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,0.1);
 }
 
 main input {
@@ -41,14 +44,13 @@ main button {
     border: none;
     flex: 1;
     font-size: 2rem;
+    background-color: lightgray;
 }
-
 
 main button:hover, main button:active {
     background-color: gray;
     cursor: pointer;
 }
-
 
 .text-good {
     border: 2px solid lightgreen;
