@@ -1,12 +1,19 @@
 body, html {
     margin: 0;
     padding: 0;
+    min-height: 100%;
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'sans-serif';
 }
 
 
 main {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     flex-grow: 1;
     height: 300px;
     max-width: 25%;
@@ -16,9 +23,10 @@ main {
 
 main input {
     flex: 1;
-    height: 30px;
     margin: 10px;
     border: none;
+    text-align: center;
+    font-size: 1.5rem;
 }
 
 main .row {
@@ -34,4 +42,10 @@ main button {
     border: none;
     flex: 1;
     font-size: 2rem;
+}
+
+
+main button:hover, main button:active {
+    background-color: gray;
+    cursor: pointer;
 }
