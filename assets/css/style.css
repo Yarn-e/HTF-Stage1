@@ -30,7 +30,6 @@ main input {
 }
 
 main .row {
-    min-width: 100%;
     display: flex;
     flex-grow: 1;
     justify-content: center;
@@ -48,4 +47,13 @@ main button {
 main button:hover, main button:active {
     background-color: gray;
     cursor: pointer;
+}
+
+
+.text-good {
+    border: 2px solid lightgreen;
+}
+
+.text-bad {
+    border: 2px solid lightcoral;
 }
