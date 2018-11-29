@@ -19,7 +19,16 @@ function postKeyPad(){
       })
     .then(function(response) {
     return response;
-  }).then(data => console.log(data));
+  }).then(data => {
+        let response = "Bad passcode";
+        if(data.ok){
+            $("#passcode").addClass("text-good");   
+            response = "Good passcode";
+        } else {
+            $("#passcode").addClass("text-bad");   
+        }
+        $("#passcode").val(response);
+    });
 }
 
 function addInputToArray(getal){
