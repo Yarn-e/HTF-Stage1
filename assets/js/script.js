@@ -1,12 +1,11 @@
-let pressedKeys = [];
+const pressedKeys = [];
 
 function postKeyPad(){
     
+    var bodybeforejson = pressedKeys.join(",");
+    console.log(bodybeforejson);
     var body = JSON.stringify({
-          "sequence" : "1,2,3,4,5"
-        });
-    
-    
+        "sequence" : bodybeforejson});
     fetch("http://involved-htf-js-2018-prod.azurewebsites.net/api/challenge/1", 
       {
         method: "POST",
@@ -22,14 +21,19 @@ function postKeyPad(){
     return response;
   }).then(data => console.log(data));
 }
-postKeyPad();
 
-function addInputToArray(){
-    
+function addInputToArray(getal){
+    pressedKeys.push(getal);
+    $("#passcode").val(pressedKeys.join(","));
+    console.log(pressedKeys);
 }
 
-
-$(".btnKeyPad").on("click", () => {
-    console.log(this.value);
+$(document).ready(() => {
+    $(".btnKeyPad").on("click", (elem) => {
+    addInputToArray(elem.target.value);
+})
+    $("#submit").on("click", () => {
+        postKeyPad();
+    })
 })
 
