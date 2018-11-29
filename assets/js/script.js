@@ -12,7 +12,7 @@ function postKeyPad(){
         headers:{
             "Content-Type":  "application/json",
             "Accept": "application/json",
-            "x-team" : "test",
+            "x-team" : "Pepega",
             
         },
         body: body
